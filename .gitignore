@@ -26,3 +26,13 @@
 *.exe
 *.out
 *.app
+
+# Customizing
+*bin*
+*build*
+# ctags file
+TAGS
+# Projectile project file
+.projectile
+# Temp files
+*~

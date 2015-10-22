@@ -10,8 +10,8 @@ using namespace std;
 // functions definitions
 shared_ptr<Person> initFamily(const string& );
 
-
-int main (){
+int main ()
+{
 
   shared_ptr<string> pName(new string("Paul"));
   shared_ptr<string> p;
