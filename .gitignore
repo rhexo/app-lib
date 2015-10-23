@@ -36,3 +36,5 @@ TAGS
 .projectile
 # Temp files
 *~
+#clang compete file
+.clang_complete
