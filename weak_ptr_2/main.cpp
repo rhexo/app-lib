@@ -2,7 +2,8 @@
 #include <string>
 #include <memory>
 #include <vector>
-#include <person.h>
+// #include <person.h>
+#include "include/person.h"
 
 using namespace std;
 
@@ -54,5 +55,8 @@ shared_ptr<Person> initFamily(const string& name ){
 
   kid->setParentsAndTheirKids(mom, dad);
 
-  return kid;
+  Person bb("DD");
+  bb.
+
+    return kid;
 }
