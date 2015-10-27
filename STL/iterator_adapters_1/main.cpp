@@ -78,6 +78,45 @@ int main() {
               ostream_iterator<string>(cout, "\n"));  // destination
 
   /** Reverse iterators */
+  vector<int> i3_coll;
+
+  // insert elements from 1 to 9
+  for (int i=1; i <= 9; ++i) {
+    i3_coll.push_back(i);
+  }
+
+  // print all elements in reverse order
+  copy(i3_coll.crbegin(),i3_coll.crend(),
+       ostream_iterator<int>(cout, " "));
+  cout << endl;
+
+  /** Move iterators */
+  vector<string> i4_coll {"some", "application", "example", "words"};
+  vector<string> i4_coll_move;
+
+  // initialize vector size for valid copy process
+  i4_coll_move.resize(i4_coll.size());
+
+  // print state of vectors befor move
+  cout << endl << "i4_coll contents: ";
+  copy(i4_coll.cbegin(),i4_coll.cend(),
+       ostream_iterator<string>(cout, " "));
+  cout << endl << "i4_coll_move contents: ";
+  copy(i4_coll_move.cbegin(),i4_coll_move.cend(),
+       ostream_iterator<string>(cout, " "));
+
+  // move elements of vector i4_coll into vector i4_coll_move
+  copy(make_move_iterator(i4_coll.begin()),
+       make_move_iterator(i4_coll.end()),
+       i4_coll_move.begin());
+
+  cout << endl << "after move:";
+  cout << endl << "i4_coll result: ";
+  copy(i4_coll.cbegin(),i4_coll.cend(),
+       ostream_iterator<string>(cout, " "));
+  cout << endl << "i4_coll_move result: ";
+  copy(i4_coll_move.cbegin(),i4_coll_move.cend(),
+       ostream_iterator<string>(cout, " "));
 
   exit(EXIT_SUCCESS);
 
