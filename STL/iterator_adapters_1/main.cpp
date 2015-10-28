@@ -19,7 +19,9 @@ int main() {
    * 4. Move iterators
    */
 
+
   /** Insert iterators */
+
   list<int> i1_coll1{1,2,3,4,5,6,7,8,9};
 
   // copy elements of coll1 into coll2 by appending them
@@ -54,7 +56,9 @@ int main() {
     cout << elem << " ";
   cout << endl;
 
+
   /** Stream iterators */
+
   vector<string> i2_coll;
 
   cout << "input words for stream iterator tests:" << endl;
@@ -77,7 +81,9 @@ int main() {
               i2_coll.cend(),                         // source: end
               ostream_iterator<string>(cout, "\n"));  // destination
 
+
   /** Reverse iterators */
+
   vector<int> i3_coll;
 
   // insert elements from 1 to 9
@@ -90,7 +96,9 @@ int main() {
        ostream_iterator<int>(cout, " "));
   cout << endl;
 
+
   /** Move iterators */
+
   vector<string> i4_coll {"some", "application", "example", "words"};
   vector<string> i4_coll_move;
 
