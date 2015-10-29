@@ -1,9 +1,11 @@
 #include <list>
 #include <set>
 #include <vector>
+#include <deque>
 #include <algorithm>
 #include <iostream>
 #include <cstdlib>
+#include "include/person.h"
 
 using namespace std;
 
@@ -102,6 +104,39 @@ int main() {
     // not found
     cout << "no prime number found" << endl;
   }
+
+
+  /** Binary predicates */
+  vector<Person> i4_coll;
+  // std::list doesn`t supported by std::sort
+
+  i4_coll.push_back(Person("Jim", "Jimmy"));
+  i4_coll.push_back(Person("Artie", "Black"));
+  i4_coll.push_back(Person("John", "Davice"));
+  i4_coll.push_back(Person("Zero", "Cool"));
+
+  cout << "list of persons:" << endl;
+  for (const auto& elem : i4_coll ) {
+    elem.print();
+  }
+
+  // ctor test
+  Person p1("Jaja", "Bings");
+  Person p2("Enjy", "Sky");
+
+  // print
+  cout << "ctor test: " << endl;
+  p1.print();
+  p2.print();
+  cout << boolalpha <<  Person::personSortCriterion(p1, p2) << endl;
+
+  p2 = p1;
+  cout << "copy Person result:";
+  p2.print();
+
+  // example of binary predicate
+  sort(i4_coll.begin(), i4_coll.end(),    // range
+       Person::personSortCriterion);              // binary predicateb
 
   exit(EXIT_SUCCESS);
 
