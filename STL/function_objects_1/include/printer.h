@@ -1,14 +1,34 @@
 #ifndef _PRINTER_H
 #define _PRINTER_H
 
+#include <cstring>
+#include <iostream>
+
+using namespace std;
+
+
 class Printer {
 public:
 
+  // int adaptor (add value to printed int values)
   int _int_adaptor;
+
   // Constructor
   Printer(int = 0);
+
   // Function object
-  void operator() (int) const;
+  void operator()(int) const;
+
+  // Print collection template
+  template <class C>
+  void collection(const C& coll, const string& head) const
+  {
+    cout << head;
+    // print collection
+    for (const auto& elem : coll) {
+      cout << elem << " ";
+    }
+  }
 
 };
 

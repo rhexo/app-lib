@@ -1,7 +1,9 @@
 #include <iostream>
+#include <cstring>
 #include "include/printer.h"
 
 using namespace std;
+
 
 Printer::Printer(int _ia){
   _int_adaptor = _ia;
