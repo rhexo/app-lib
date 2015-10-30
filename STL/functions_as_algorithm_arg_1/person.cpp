@@ -46,3 +46,7 @@ bool Person::personSortCriterion(const Person& p1, const Person& p2){
     (p1.lastname() == p2.lastname() &&
      p1.firstname() < p2.firstname());
 };
+
+ostream& operator<< (ostream& _cout, const Person& p){
+  return _cout << "person: " << p.firstname() << " " << p.lastname() << endl;
+}

@@ -25,5 +25,8 @@ private:
   string _last;
 };
 
+// overload << operator for Person class
+ostream& operator<< (ostream &, const Person&);
+
 
 #endif
