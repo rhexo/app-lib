@@ -1,0 +1,12 @@
+* Набор примеров для работы с STL контейнерами
+** DONE [[file:stl_arrays_1/main.cpp::][Arrays]]
+   CLOSED: [2015-11-06 пт 02:31]
+** DONE [[file:stl_deque_1/main.cpp::/**%20Example%20of%20using%20vectors%20*/][Deque]]
+   CLOSED: [2015-11-06 пт 02:31]
+** DONE [[file:stl_list_1/main.cpp::/**%20Example%20of%20using%20vectors%20*/][Lists]]
+   CLOSED: [2015-11-06 пт 02:31]
+** DONE [[file:stl_sets_1/main.cpp::/**%20Example%20of%20using%20sets%20and%20multisets%20*/][Sets]]
+   CLOSED: [2015-11-06 пт 02:32]
+** DONE [[file:stl_vectors_1/main.cpp::/**%20Example%20of%20using%20arrays%20*/][Vectors]]
+   CLOSED: [2015-11-06 пт 02:32]
+** TODO Maps
