@@ -9,4 +9,6 @@
    CLOSED: [2015-11-06 пт 02:32]
 ** DONE [[file:stl_vectors_1/main.cpp::/**%20Example%20of%20using%20arrays%20*/][Vectors]]
    CLOSED: [2015-11-06 пт 02:32]
-** TODO Maps
+** DONE [[file:stl_maps_1/main.cpp::/**%20Using%20map%20and%20multimap%20examples%20*/][Maps]]
+   CLOSED: [2015-11-06 пт 21:13]
+** TODO [[file:stl_impl_ref_semantics/main.cpp::/**%20STL%20containers%20implementing%20with%20reference%20semantics%20*/][Пример использование контейнеров совместно с smart pointers]]

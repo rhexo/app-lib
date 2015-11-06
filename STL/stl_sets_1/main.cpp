@@ -14,7 +14,6 @@ using namespace std;
 int main(){
 
   /** Some futures of sets and multisets */
-
   // type of the collection:
   // - no duplicates
   // - elements are integral values
