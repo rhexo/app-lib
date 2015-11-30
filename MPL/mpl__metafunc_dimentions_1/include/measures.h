@@ -2,6 +2,9 @@
 #include <iostream>
 #include <boost/mpl/vector_c.hpp>
 #include <boost/mpl/transform.hpp>
+#include <boost/mpl/equal.hpp>
+#include <boost/mpl/plus.hpp>
+#include <boost/static_assert.hpp>
 
 namespace measures{
 
@@ -30,7 +33,17 @@ namespace measures{
   template <class T, class D>
   struct quantity
   {
+
     explicit quantity(T x) : m_value(x) {}
+
+    // converting constructor
+    template <class D2>
+    quantity(const quantity<T,D2>& rhs)
+      : m_value(rhs.value())
+    {
+      BOOST_STATIC_ASSERT((mpl::equal<D,D2>::type::value));
+    }
+
     T value() const {return m_value;}
 
   private:
