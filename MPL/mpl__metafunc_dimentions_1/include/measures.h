@@ -30,18 +30,18 @@ namespace measures{
 
 
   // quantity base class
-  template <class T, class D>
+  template <class T, class Dimension>
   struct quantity
   {
 
     explicit quantity(T x) : m_value(x) {}
 
     // converting constructor
-    template <class D2>
-    quantity(const quantity<T,D2>& rhs)
+    template <class OtherDimension>
+    quantity(const quantity<T,OtherDimension>& rhs)
       : m_value(rhs.value())
     {
-      BOOST_STATIC_ASSERT((mpl::equal<D,D2>::type::value));
+      BOOST_STATIC_ASSERT((mpl::equal<Dimension,OtherDimension>::type::value));
     }
 
     T value() const {return m_value;}

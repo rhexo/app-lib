@@ -26,5 +26,8 @@ int main(){
   // G
   cout << "G: 10*9.8 -> " << quantity<float,mass>(10.0f) * quantity<float, acceleration>(9.8f) << endl;
 
+  quantity<float,acceleration> a(9.8f);
+  // quantity<float,mass> bogus = m * a;
+
   exit(EXIT_SUCCESS);
 };
