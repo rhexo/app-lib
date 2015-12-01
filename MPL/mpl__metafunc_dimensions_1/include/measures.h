@@ -4,12 +4,15 @@
 #include <boost/mpl/transform.hpp>
 #include <boost/mpl/equal.hpp>
 #include <boost/mpl/plus.hpp>
+#include <boost/mpl/minus.hpp>
+#include <boost/mpl/placeholders.hpp>
 #include <boost/static_assert.hpp>
 
 namespace measures{
 
   using namespace boost;
   using namespace std;
+  using namespace boost::mpl::placeholders;
 
   // define dimentions
   typedef mpl::vector_c<int,1,0,0,0,0,0,0> mass;
@@ -82,6 +85,16 @@ namespace measures{
     };
   };
 
+  // example of metafunction forwarding
+  // inheriting base class minus, inheriting typedef typename mpl::plus<T1,T2>::type type.
+  struct minus_f
+  {
+    template <class T1, class T2>
+    struct apply :
+      mpl::minus<T1,T2> {};
+  };
+
+
   // overloading multiplity
   template <class T, class D1, class D2>
   quantity<T, typename mpl::transform<D1,D2,plus_f>::type>  // new dimensions of result
@@ -90,6 +103,16 @@ namespace measures{
     typedef typename mpl::transform<D1,D2,plus_f>::type dim;
     return quantity<T, dim>( x.value() * y.value() );
   };
+
+  // overloading division
+  // using placegolders expression
+  template <class T, class D1, class D2>
+  quantity<T, typename mpl::transform<D1, D2, mpl::minus<_1,_2> >::type >
+  operator/(quantity<T,D1> x, quantity<T,D2> y)
+  {
+    typedef typename mpl::transform<D1, D2, mpl::minus<_1, _2>>::type dim;
+    return quantity<T, dim>(x.value() / y.value());
+  }
 
 
 };
