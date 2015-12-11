@@ -24,6 +24,9 @@ include_directories( ${Boost_INCLUDE_DIR}  "${PROJECT_SOURCE_DIR}/include")
 add_executable(testapp
   include/sequences.hpp
   include/iterators.hpp
+  include/classes.hpp
+  include/integral_swrappers.hpp
+  include/own_sequences.hpp
 
   main.cpp)
 

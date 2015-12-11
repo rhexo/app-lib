@@ -6,6 +6,8 @@
 #include <boost/static_assert.hpp>
 #include "include/sequences.hpp"
 #include "include/iterators.hpp"
+#include "include/classes.hpp"
+#include "include/integral_swrappers.hpp"
 
 using namespace std;
 namespace mpl=boost::mpl;
