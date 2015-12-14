@@ -43,19 +43,22 @@ int main(){
 
   typedef mpl::tiny<mpl::int_<10>,mpl::int_<20>,mpl::int_<30> > S;
 
-  // pop front element of S, unless it`s empty
-  typedef mpl::eval_if<
-    mpl::empty<S>,
-    mpl::identity<S>,
-    mpl::pop_front<S>
-    >::type r1;
 
-  // likewise
-  typedef mpl::eval_if<
-    mpl::empty<S>,
-    S,  // when invoked, S return S
-    mpl::pop_front<S>
-    >::type r2;
+  // pop_front_impl must be implemented
+
+  // //pop front element of S, unless it`s empty
+  // typedef mpl::eval_if<
+  //   mpl::empty<S>,
+  //   mpl::identity<S>,
+  //   mpl::pop_front<S>
+  //   >::type r1;
+
+  // // likewise
+  // typedef mpl::eval_if<
+  //   mpl::empty<S>,
+  //   S,  // when invoked, S return S
+  //   mpl::pop_front<S>
+  //   >::type r2;
 
 
   cout << "Tiny.at<2> = " << mpl::at<S,mpl::int_<2> >::type::value << endl;
