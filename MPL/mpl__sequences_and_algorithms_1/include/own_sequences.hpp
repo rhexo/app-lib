@@ -9,6 +9,7 @@
 #include <boost/mpl/eval_if.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/end.hpp>
+#include <boost/mpl/size.hpp>
 
 
 namespace boost {
@@ -236,5 +237,37 @@ namespace boost {
     };
 
     // pop_front ??
+
+    // tiny push back
+    template <class Tiny, class T, int N>
+    struct tiny_push_back;
+
+    template <class Tiny, class T>
+    struct tiny_push_back<Tiny,T,0>
+      :tiny<T,none,none>
+    {};
+
+    template <class Tiny, class T>
+    struct tiny_push_back<Tiny,T,1>
+      :tiny<typename Tiny::t0, T, none>
+    {};
+
+    template <class Tiny, class T>
+    struct tiny_push_back<Tiny,T,2>
+      :tiny<typename Tiny::t0, typename Tiny::t1, T>
+    {};
+
+    template <>
+    struct push_back_impl<tiny_tag>
+    {
+      template <class Tiny, class T>
+      struct apply
+        : tiny_push_back<
+        Tiny, T, size<Tiny>::value
+        >
+      {};
+    };
+
+
 
   }};
