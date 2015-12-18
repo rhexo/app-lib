@@ -28,8 +28,8 @@
 *.app
 
 # Customizing
-*bin*
-*build*
+bin*/
+build*/
 # ctags file
 TAGS
 # Projectile project file

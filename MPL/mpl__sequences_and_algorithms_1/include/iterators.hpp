@@ -10,10 +10,10 @@ namespace seq {
   namespace mpl = boost::mpl;
 
   // dereference the iterator
-  typedef mpl::deref<long_pos>::type x;
+  typedef mpl::deref<long_pos>::type x; // x is an item of sequence
 
   // next++
   typedef mpl::next<long_pos>::type float_pos;
-  typedef mpl::deref<float_pos>::type y;
+  typedef mpl::deref<float_pos>::type y; // y is an item of sequence
 
 }
