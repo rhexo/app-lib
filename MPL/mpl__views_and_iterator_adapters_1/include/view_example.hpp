@@ -13,6 +13,7 @@
 #include <boost/mpl/back_inserter.hpp>
 #include <boost/mpl/copy.hpp>
 #include <boost/mpl/sort.hpp>
+#include <boost/mpl/filter_view.hpp>
 
 
 using namespace std;
@@ -76,3 +77,20 @@ typedef mpl::sort<
     mpl::back_inserter< mpl::vector<> >
   >::type
 >::type sorting_result;
+
+// Example 4
+// Selective element processing
+// filter_view is a lazy version of filter algorithm. We can process 
+// subset of secuencess elements without building an intermediate sequence
+
+// a sequence of the pointees of all pointer elements in Seq
+template <class Seq>
+struct pointees_seq
+  :mpl::transform_view<
+  mpl::filter_view< 
+    Seq, 
+    is_pointer<_1> 
+    >,
+  remove_pointer<_1>
+  >
+{};
