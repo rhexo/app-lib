@@ -23,6 +23,7 @@ include_directories( ${Boost_INCLUDE_DIR}  "${PROJECT_SOURCE_DIR}/include")
 # Create application executable
 add_executable(testapp
   include/views.hpp
+  include/view_example.hpp
 
   main.cpp)
 
