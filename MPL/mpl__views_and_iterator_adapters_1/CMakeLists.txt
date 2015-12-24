@@ -18,12 +18,14 @@ find_package( Boost 1.55 COMPONENTS program_options REQUIRED )
 # The folowing folder will be included
 include_directories( ${Boost_INCLUDE_DIR}  "${PROJECT_SOURCE_DIR}/include")
 
+
 #file(GLOB SOURCES "*.cpp")
 
 # Create application executable
 add_executable(testapp
   include/views.hpp
   include/view_example.hpp
+  include/own_view.hpp
 
   main.cpp)
 
