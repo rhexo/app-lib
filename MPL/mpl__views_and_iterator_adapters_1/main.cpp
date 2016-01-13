@@ -65,7 +65,6 @@ int main()
   mpl::for_each<sorting_result>(seq_printer());
   cout << endl;
   
-  mpl::
 
   exit(EXIT_SUCCESS);
 }
