@@ -56,7 +56,7 @@ int main()
   cout << "fact5 = " << fact5::value << endl;
   cout << "fact10 = " << fact10::value << endl;
   
-    // print number_iter result
+  // print number_iter result
   cout << "number_iter: " << number_iter::type::value << endl;  // 3
   cout << "number_iter+1: " << mpl::deref< mpl::next<number_iter>::type >::type::value << endl;  // 4
   //sorting sequence example
