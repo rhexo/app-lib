@@ -26,6 +26,8 @@ add_executable(testapp
   include/adder.hpp
   include/pair_comparer.hpp
   include/tuple.hpp
+  include/catch_all.hpp
+  include/forwarding.hpp
 
   main.cpp)
 
