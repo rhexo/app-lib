@@ -2,6 +2,7 @@
 #define _METHOD_HPP
 
 #include "utility.hpp"
+#include <vector>
 
 namespace method {
   
@@ -13,19 +14,23 @@ namespace method {
   template <int N>
   struct combinators<int,N>{
 
-    void plex(int (&arr)[N]) {
+    std::vector<int*> plex(int (&arr)[N]) {
+      
+      std::vector<int*> list;
 
       int i = 1;
       int j = 0;
       int k = 0;
       int m = 0;
       int n = N-1;
-      int ord = 0;
-  
+      
+      list.clear();
+
       while (i != 0 ) {
-        // Печатаем элемент перестановки
-        utility::print<int,N>().data(arr, ord);    
-        ++ord;
+
+        int *entry = utility::copy<int,N>().data(arr);                
+        list.push_back(entry);
+
         i = n - 1;
         while(arr[i] > arr[i+1])
           --i;
@@ -40,6 +45,8 @@ namespace method {
           ++k;
         }          
       } 
+      
+      return list;
     }
     
   };

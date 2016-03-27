@@ -18,6 +18,13 @@ namespace utility {
         std::cout << arr[i] << std::string(" ");
       std::cout << std::endl;
     }
+
+    void data(int *arr) 
+    {
+      for( int i=0; i<N; i++)
+        std::cout << arr[i] << std::string(" ");
+      std::cout << std::endl;
+    }
   };
 
   /** Меняем местами i,j элементы массива A, длиной length */
@@ -52,6 +59,21 @@ namespace utility {
 
       return true;
     
+    }
+  };
+  
+  // Копируем один массив в другой
+  template <typename T, int N>
+  struct copy;
+
+  template <int N>
+  struct copy<int,N> {
+    
+    int* data(int (&arr)[N]){
+      int *c = new int[N];
+      for (int i=0; i<N; i++)
+        c[i] = arr[i];
+      return c;
     }
   };
 
