@@ -8,14 +8,14 @@ namespace method {
 
 
   /** Метод получения факториального числа d[N] для m < n! */  
-  template <int N>
+  template <typename I, int N, typename T = int >
   struct fdecomp {
         
     /** Получаем факториальное представление числа m в виде динамически
         выделяемого массива int* */
-    int* data(int m) {
+    T* data(T m) {
       
-      int *d = new int[N];
+      T *d = new T[N];
       int n = N;
       
       if (n < 1)
@@ -23,12 +23,12 @@ namespace method {
 
       int i = 0;
       d[0] = 0;
-      int q = m;
+      I q = m;
       
       while (q > 0) {
         ++i;
-        d[i-1] = q % i;
-        q = (int)(q / i);
+        d[i-1] = (T)(q % i);
+        q = (I)(q / i);
       }
       ++i;
       
@@ -41,7 +41,7 @@ namespace method {
     }
     
     /** Получаем факториальное представление d[N] для числа m */
-    void data(int m, int (&d)[N]) {
+    void data(I m, T (&d)[N]) {
 
       int n = N;
       
@@ -50,12 +50,12 @@ namespace method {
 
       int i = 0;
       d[0] = 0;
-      int q = m;
+      I q = m;
       
       while (q > 0) {
         ++i;
-        d[i-1] = q % i;
-        q = (int)(q / i);
+        d[i-1] = (T)(q % i);
+        q = (I)(q / i);
       }
       ++i;
       
@@ -67,14 +67,14 @@ namespace method {
     }
     
     /** Выполняем преобразование факториального числа d[N] в значение факториала m */
-    int datad(int (&d)[N]) {
+    I datad(T (&d)[N]) {
       
       if (N<1)
         return 0;
       
-      int m = 0;
+      I m = 0;
       for(int i=1;i<N;i++)
-        m += d[i] * utility::factorial().data(i);
+        m += d[i] * utility::factorial<I>().data(i);
       
       return m;
     }
@@ -84,21 +84,21 @@ namespace method {
   /** Вычисляем перестановку, которая соответствует факториальному представлению
       d[N]. Вычисляем как смещение относительно начальной перестановки a0 */
 
-  template<int N>
+  template<int N, typename T = int>
   struct pconstrf {
     
 
     /** Прямое преобразование: факториальное представление -> перестановка */
-    int* data(int* d) {
+    T* data(T* d) {
       
       int n = N;
       int l = 0;
       // Инициализация начальной перестановки
-      int a0[N];
+      T a0[N];
       for (int k=0;k<N;k++)
         a0[k] = k;
       
-      int *ak = new int[N];
+      T *ak = new T[N];
       
       int k=n-1;
       int m=n-1;
@@ -118,12 +118,12 @@ namespace method {
     }
 
     /** Прямое преобразование: факториальное представление числа -> перестановка */
-    void data(int (&d)[N], int (&ak)[N]) {
+    void data(T (&d)[N], T (&ak)[N]) {
       
       int n = N;
       int l = 0;
       // Инициализация начальной перестановки
-      int a0[N];
+      T a0[N];
       for (int k=0;k<N;k++)
         a0[k] = k;
       
@@ -144,7 +144,7 @@ namespace method {
     }
     
     /** Обратное преобразование: перестновка -> факториальное представление */
-    void datad(int (&ak)[N], int (&d)[N]) {
+    void datad(T (&ak)[N], T (&d)[N]) {
 
       int i = 0;
       int j = 0;
@@ -152,7 +152,7 @@ namespace method {
       int k = 0;
       
       // Инициализация начальной перестановки
-      int a0[N];
+      T a0[N];
       for (int k=0;k<N;k++)
         a0[k] = k;
       
@@ -176,27 +176,27 @@ namespace method {
   };
 
   /** Алгоритм вычисления перестановок для m < N! */
-  template<int N>
+  template<typename I,int N, typename T = int>
   struct pindex {
     
     /** Получаем вектор с N! перестановками */
-    std::vector<int*> data() {
+    std::vector<T*> data() {
       
       int n = N;      
-      int *d = nullptr;
-      int *ak = nullptr;
-      std::vector<int*> list;
+      T *d = nullptr;
+      T *ak = nullptr;
+      std::vector<T*> list;
       
       list.clear();
       
-      int nf = utility::factorial().data(n);
+      I nf = utility::factorial<I>().data(n);
 
       // Вычисляем перестановки
-      for (int k=0;k<nf;k++){
+      for (I k=0;k<nf;k++){
         // Получаем факториальное представление по индексу
-        d = method::fdecomp<N>().data(k);
+        d = method::fdecomp<I,N,T>().data(k);
         // факториальное представление в перестановку
-        ak = method::pconstrf<N>().data(d);        
+        ak = method::pconstrf<N,T>().data(d);        
         list.push_back(ak);
         delete d;
       }
@@ -205,33 +205,31 @@ namespace method {
     }
     
     /** Получаем перестановку по индексу */
-    void get(int index, int (&ak)[N]) {
+    void get(I index, T (&ak)[N]) {
 
       int n = N;      
-      int d[N];
+      T d[N];
                  
       // Вычисляем перестановки
       // Получаем факториальное представление по индексу
-      method::fdecomp<N>().data(index,d);
+      method::fdecomp<I,N,T>().data(index,d);
       // факториальное представление в перестановку
-      method::pconstrf<N>().data(d,ak);              
+      method::pconstrf<N,T>().data(d,ak);              
       
     }
 
     /** Получаем индекс на основе перестановки */
-    int get(int (&ak)[N]) {
+    I get(T (&ak)[N]) {
       
-      int d[N];
+      T d[N];
       
-      method::pconstrf<N>().datad(ak,d);      
-      int k = method::fdecomp<N>().datad(d);
+      method::pconstrf<N,T>().datad(ak,d);      
+      I k = method::fdecomp<I,N,T>().datad(d);
 
       return k;
     }
 
   };
-
-
 
 }
 

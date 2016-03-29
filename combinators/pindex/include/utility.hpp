@@ -5,13 +5,9 @@ namespace utility {
 
   /** Печать некоторого типа (Шаблон) */
   template <typename T, int N >
-  struct print;
+  struct print {
 
-  /** Печатаем значение перестановки для int[] */
-  template<int N> 
-  struct print<int,N>
-  {  
-    void data(int (&arr)[N], int ord) 
+    void data(T (&arr)[N], int ord) 
     {
       std::cout << ord << ": ";
       for( int i=0; i<N; i++)
@@ -19,7 +15,7 @@ namespace utility {
       std::cout << std::endl;
     }
 
-    void data(int *arr) 
+    void data(T *arr) 
     {
       for( int i=0; i<N; i++)
         std::cout << arr[i] << std::string(" ");
@@ -27,31 +23,20 @@ namespace utility {
     }
   };
 
-  /** Меняем местами i,j элементы массива A, длиной length */
-  template<typename T, int N>
-  struct swap;
   
   /** Меняем местами элементы массива int[] */
-  template <int N>
-  struct swap<int,N> {
+  template <typename T, int N>
+  struct swap {
 
-    bool data(int (&arr)[N], int i, int j) {
+    bool data(T (&arr)[N], int i, int j) {
         
       if (i > N || j > N)
         return false;
 
       if (i == j)
         return true;
-
-      // if (is_array<A>::value == false) {
-      //   return false;
-      // }
-      // // Получаем тип элемента массива
-      // typedef typename std::remove_extent<A>::type tt_a;
     
-      // tt_a p;
-    
-      int p;
+      T p;
 
       p = arr[i];
       arr[i] = arr[j];
@@ -62,25 +47,24 @@ namespace utility {
     }
   };
   
-  // Копируем один массив в другой
-  template <typename T, int N>
-  struct copy;
-
-  template <int N>
-  struct copy<int,N> {
+  /** Копируем один массив в другой */
+  template <typename T,int N>
+  struct copy {
     
-    int* data(int (&arr)[N]){
-      int *c = new int[N];
+    T* data(T (&arr)[N]){
+      T *c = new T[N];
       for (int i=0; i<N; i++)
         c[i] = arr[i];
       return c;
     }
   };
-
+  
+  /** Вычисляем факториал числа */
+  template <typename I>
   struct factorial {
-    int data(int n) {
+    I data(int n) {
       
-      int nf = 1;
+      I nf = 1;
       // Вычисляем факториал числа
       for (int k=2;k<=n;k++)
         nf *= k;
