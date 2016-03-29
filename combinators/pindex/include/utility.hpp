@@ -77,6 +77,20 @@ namespace utility {
     }
   };
 
+  struct factorial {
+    int data(int n) {
+      
+      int nf = 1;
+      // Вычисляем факториал числа
+      for (int k=2;k<=n;k++)
+        nf *= k;
+      
+      return nf;
+    }
+    
+  };
+
+
 };
 
 
