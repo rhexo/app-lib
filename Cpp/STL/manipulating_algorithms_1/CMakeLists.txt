@@ -15,7 +15,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 # The folowing folder will be included
 include_directories("${PROJECT_SOURCE_DIR}/include")
 
-file(GLOB SOURCES "*.cpp")
+#file(GLOB SOURCES "*.cpp")
 
 # Create application executable
-add_executable(hello ${SOURCES})
+add_executable(hello
+        main.cpp)

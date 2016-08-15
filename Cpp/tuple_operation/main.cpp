@@ -49,7 +49,8 @@ int main () {
   tie(i,std::ignore,s) = t2;
 
   // For the tuples, you have to explicitly convert the initial values into a tuple (for example, by using a make_tuple)
-  vector<pair<int,float>> v {  make_tuple(1,1.0), make_tuple(2,2.0) };  // OK
+  // Doesn`t work under gcc with -std=c++11  
+// vector<pair<int,float>> v {  make_tuple(1,1.0), make_tuple(2,2.0) };  // OK
 
   tuple<int,int,int> t3;
   t3 = foo();

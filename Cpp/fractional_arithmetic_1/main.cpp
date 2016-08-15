@@ -4,6 +4,9 @@
 
 using namespace std;
 
+template<int N> 
+using num_by_handred = ratio<N,100>;
+
 int main ( ){
 
   cout << boolalpha;
@@ -31,6 +34,12 @@ int main ( ){
 
   typedef ratio_multiply<FiveThirds, AlsoFiveThirds> multiply_result;
   cout << "multiply (5/3, 25/15) ? " << multiply_result::num << "/" << multiply_result::den << endl;
+  
+  num_by_handred<12> b12;
+  num_by_handred<89> b89;
+
+  cout << ratio_divide<num_by_handred<12>, num_by_handred<89> >::num << "/"
+       << ratio_divide<num_by_handred<12>, num_by_handred<89> >::den << endl;
 
   exit(EXIT_SUCCESS);
 }
